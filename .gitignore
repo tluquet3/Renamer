@@ -1,0 +1,14 @@
+# Virtual Env
+renamer_env/
+
+# Compiled python modules.
+*.pyc
+
+#Test files 
+tests/
+
+#MacOS specfic files
+.DS_Store
+
+#IDE files 
+.idea/
