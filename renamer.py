@@ -8,27 +8,15 @@ import sys
 
 from glob import glob
 
-def debug(func):    # activate with @debug
-    def inner(*args, **kwargs):
-        lg.debug('Running method: %s', func.__name__)
-        try:
-            return func(*args, **kwargs)
-        except Exception as e:
-            lg.error(e.message)
-            lg.error(str(e))
-            raise
-    return inner
-
 def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("selector", help="Files to select in the directory, type: string", default="*")
-    parser.add_argument("-v", "--verbose",action='store_true', help="""Activate verbose mode""")
-    parser.add_argument("-d", "--debug",action='store_true', help="""Activate debug mode""")
+    parser.add_argument("-re", "--reindex",action="store_true", help="""Reindex all selected files by creation date from 0 to N, n the number of files. The number will be appended at the begining of the file""")
     parser.add_argument("-a", "--append",help="""Append string at the end of the files""")
     parser.add_argument("-i", "--insert",help="""Insert String at the start of the file""")
     parser.add_argument("-l", "--list",action="store_true", help="""List files of selection""")
-    parser.add_argument("-re", "--reindex",action="store_true", help="""Reindex all selected files by creation date from 0 to N, n the number of files. The number will be appended at the begining of the file""")
     parser.add_argument("-rm", "--remove",action="store_true", help="""Remove files""")
+    parser.add_argument("-v", "--verbose",action='store_true', help="""Activate verbose mode""")
     return parser.parse_args()
 
 def pad(number,padding):
@@ -102,8 +90,6 @@ def main():
     args = parse_arguments()
     if args.verbose :
         lg.basicConfig(level=lg.INFO)
-    elif args.debug :
-        lg.basicConfig(level=lg.DEBUG)
 
     # Main
     r = Renamer(args.selector)
