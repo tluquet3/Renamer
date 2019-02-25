@@ -4,21 +4,19 @@ Initially created to reindex my holidays pictures from multiple cameras,  Rename
 
 # Help
 
-* usage: renamer.py [-h] [-v] [-d] [-a APPEND] [-i INSERT] [-l] [-re] [-rm]
+* usage: renamer.py [-h] [-re] [-a APPEND] [-i INSERT] [-l] [-rm] [-v] selector
                   selector
 * positional arguments:
 	selector              Files to select in the directory, type: string
 
 * optional arguments:
   - -h, --help | show this help message and exit
-  - -v, --verbose | Activate verbose mode
-  - -d, --debug  |  Activate debug mode
+  - -re, --reindex  |  Reindex all selected files by creation date from 0 to N, n the number of files. The number will be appended at the begining of the file
   - -a APPEND, --append APPEND  |  Append string at the end of the files
   - -i INSERT, --insert INSERT  | Insert String at the start of the file
   - -l, --list  |  List files of selection
-  - -re, --reindex  |  Reindex all selected files by creation date from 0 to N, n the number of files. The number will be appended at the begining of the file
   - -rm, --remove  |  Remove files
-
+  - -v, --verbose | Activate verbose mode
 
 # Examples 
 
